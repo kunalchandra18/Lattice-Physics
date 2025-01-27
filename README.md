@@ -4,4 +4,7 @@ Project Description : The project aims at predicting the IMF and PPPF values usi
 
 potential issues that might be faced : the libraries to be imported might not already be downloaded by pip
 
+Reference Book/ source of information : 1)Machine Learning using Python (Manaranjan Pradhan, U Dinesh Kumar)
+                                        2) Pclub IITK ML Roadmap
+
 Creator : Kunal Chandra (240580)
