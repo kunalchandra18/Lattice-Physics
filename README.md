@@ -6,5 +6,6 @@ potential issues that might be faced : the libraries to be imported might not al
 
 Reference Book/ source of information : 1)Machine Learning using Python (Manaranjan Pradhan, U Dinesh Kumar)
                                         2) Pclub IITK ML Roadmap
+Note : There is a lot of visual representation used.
 
 Creator : Kunal Chandra (240580)
