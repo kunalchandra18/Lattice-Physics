@@ -52,12 +52,9 @@ sn.heatmap(i) # the heatmap also suggests the same idea that none of the 39 feat
 for i in range(2,40):
     sn.regplot(x = data.iloc[:,i], y = data.iloc[:, 0])
     plt.show()
-# the scatter plot shows that the 39 features are randomly scattered wrt PPPF
-
-for i in range(2,40):
     sn.regplot(x = data.iloc[:,i], y = data.iloc[:,1])
     plt.show()
-# the scatter plot shows that the 39 features are randomly scattered wrt IMF
+# the scatter plot shows that the 39 features are randomly scattered wrt PPPF and IMF
 
 # Step - 4 : Modelling
 # as the features are randomly scattered wrt the target variables(IMF and PPPF) and we also have thousands of observations, we should use a tree based model,further as there is low correlation between targets and features we use Random forest Regression  
@@ -77,4 +74,7 @@ print(f"The r2 score for the model predicting PPPF : {metric.r2_score(Y_test_ppp
 params = {"n_estimators" : (50,100), "max_depth" : (5,30), "max_features" : ("sqrt","log2")}       
 bs_pppf = bs(estimator = rfr(),search_spaces=params,scoring='r2', cv = 5).fit(X_train, Y_train_pppf)
 bs_imf = bs(estimator = rfr(),search_spaces=params,scoring='r2', cv = 5).fit(X_train, Y_train_imf)
-bs_imf.best_score_
+
+print(f"The r2 score of the model predicting PPPF after tuning : {metric.r2_score(Y_test_pppf,bs_pppf.predict(X_test))}\nThe RMSE: {np.sqrt(metric.mean_squared_error(Y_test_pppf,bs_pppf.predict(X_test)))}\nThe r2 score for the model predicting IMF after tuning : {metric.r2_score(Y_test_imf,bs_imf.predict(X_test))}\nThe RMSE : {np.sqrt(metric.mean_squared_error(Y_test_imf,bs_imf.predict(X_test)))}")
+
+# as the scoring parameters have decreased after tuning, that indicates that adjustments made to the hyperparameters during tuning resulted in less optimal fit to the data
